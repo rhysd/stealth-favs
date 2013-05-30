@@ -1,5 +1,6 @@
-require "stealth_favs/version"
+# encoding: utf-8
 
-module StealthFavs
-  # Your code goes here...
-end
+require 'thor'
+
+require "stealth_favs/version"
+require "stealth_favs/cli"
