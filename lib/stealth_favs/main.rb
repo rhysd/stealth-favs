@@ -6,6 +6,7 @@ require 'yaml'
 module StealthFavs
   module Main extend self
 
+    # put your authentication keys in ~/.credential.yml
     CredentialFile = File.expand_path('~') + '/.credential.yml'
 
     def config_twitter
