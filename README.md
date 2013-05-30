@@ -1,6 +1,6 @@
 # Stealth::Favs
 
-TODO: Write a gem description
+Send many stealth-favorites to specific user or status on Twitter.
 
 ## Installation
 
