@@ -18,7 +18,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ stealth-favs user {USER_NAME} [NUM_OF_FAVS]
+    $ stealth-favs id {STATUS_ID} [NUM_OF_FAVS]
 
 ## Contributing
 
