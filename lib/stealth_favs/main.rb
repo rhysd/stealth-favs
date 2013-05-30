@@ -25,18 +25,20 @@ module StealthFavs
 
     def cmd_id(opts, id, num_times = 20)
       cl = config_twitter
-      begin
-        (1..num_times).each do |i|
-          cl.favorite id
-          puts "[#{i}] Favorited status #{id}" if opts[:verbose]
-          sleep 0.1
-          cl.unfavorite id
-          puts "[#{i}] Unfavorited status #{id}" if opts[:verbose]
-          sleep 0.1
-        end
-      rescue Twitter::Error::NotFound
-        STDERR.puts "status is not found"
+      (1..num_times).each do |i|
+        cl.favorite id
+        puts "[#{i}] Favorited status #{id}" if opts[:verbose]
+        sleep 0.1
+        cl.unfavorite id
+        puts "[#{i}] Unfavorited status #{id}" if opts[:verbose]
+        sleep 0.1
       end
+    rescue Twitter::Error::NotFound => e
+      STDERR.puts "status is not found"
+      raise e
+    rescue => e
+      cl.unfavorite id
+      raise e
     end
 
     def cmd_user(opts, name, num_times = 20)
@@ -44,8 +46,9 @@ module StealthFavs
       begin
         id = cl.user_timeline(name).first.id
         puts "A target status is #{id}." if opts[:verbose]
-      rescue Twitter::Error::NotFound
+      rescue Twitter::Error::NotFound => e
         STDERR.puts "user is not found"
+        raise e
       end
       cmd_id opts, id, num_times
     end
