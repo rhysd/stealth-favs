@@ -6,6 +6,4 @@ require 'stealth_favs'
 #
 # executable
 #
-if __FILE__ == $0 then
-  StealthFavs::App.start
-end
+StealthFavs::App.start
